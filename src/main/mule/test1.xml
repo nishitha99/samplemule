@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2ce6941d-e08d-4b95-a832-374943816f4c" >
+		<http:listener-connection host="0.0.0.0" port="8085" />
+	</http:listener-config>
+	<flow name="test1Flow" doc:id="ebe4c5bf-290a-48e3-94ea-2304e287f132" >
+		<http:listener doc:name="Listener" doc:id="04184337-3abb-4df3-be7b-0505b34bfd02" config-ref="HTTP_Listener_config" path="/samplemule" allowedMethods="GET"/>
+		<set-payload value="Hello.....My first mule project" doc:name="Set Payload" doc:id="4e48e300-eb94-40e7-9f3b-9710f942eca5" />
+	</flow>
+	<flow name="test1Flow1" doc:id="60a6b028-3807-4358-9862-626b1c0a6edb" >
+		<http:listener doc:name="Listener" doc:id="c1c5f348-6000-4ce8-a867-821e6f966282" config-ref="HTTP_Listener_config" path="/samplemule" allowedMethods="POST"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="564d9632-e85f-4607-a2c4-f008f0a502ce" />
+	</flow>
+</mule>
